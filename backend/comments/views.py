@@ -1,12 +1,15 @@
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.permission import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Comments
 from .serializers import CommentsSerializer
 
-# Create your views here.
 
+
+
+
+# Create your views here.
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def get_all_comments(request):
@@ -32,3 +35,19 @@ def user_comments(request):
         return Response(serializer.data)
 
 
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def comment_detail(request, pk):
+    comment = get_object_or_404(Comments, pk=pk)
+    if request.method == 'GET':
+        serializer = CommentsSerializer(comment);
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    elif request.method == 'PUT':
+        serializer = CommentsSerializer(comment, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(user=request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    elif request.method == 'DELETE':
+        comment.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
