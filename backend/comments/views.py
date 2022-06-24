@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -38,7 +39,10 @@ def user_comments(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def comment_detail(request, pk):
+    print(
+        'User ', f"{request.user.id}")
     comment = get_object_or_404(Comments, pk=pk)
     if request.method == 'GET':
         serializer = CommentsSerializer(comment);
