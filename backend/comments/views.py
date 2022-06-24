@@ -13,8 +13,16 @@ def comments_list(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'POST':
         serializer = CommentsSerializer(data=request.data)
-        if serializer.is_valid() == True:
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+@api_view(['GET'])
+def comment_detail(requst, pk):
+    try:
+        comment = Comments.objects.get(pk=pk)
+        serializer = CommentsSerializer(comment)
+        
+        return Response(serializer.data)
+    except Comments.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
