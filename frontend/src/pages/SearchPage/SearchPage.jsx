@@ -12,7 +12,7 @@ const SearchPage= () => {
             try {
                 let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=cats&key=AIzaSyCg6SPiJnWlubOupiBPT59UntynLNthKPM")
                 console.log(response.data)
-                setSearchResults(response.data)
+                setSearchResults(response.data.items)
             } catch (error) {
                 console.log(error.response.data);
             }
