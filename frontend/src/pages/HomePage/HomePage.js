@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
 import axios from "axios";
+import SearchBar from "../SearchPage/SearchBar";
+import SearchPage from "../SearchPage/SearchPage";
 
 
 const HomePage = () => {
@@ -50,6 +52,8 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
+      <SearchBar />
+      <SearchPage />
     {console.log('searchResults in render:' , searchResults)}
       {cars &&
         cars.map((car) => (
