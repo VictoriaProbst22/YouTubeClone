@@ -7,21 +7,19 @@ const SearchPage = (props) => {
     
 
     return (
-        <><table>
-            <thead>
-                <tr>
-                    <th>Results</th>
-                </tr>
-            </thead>
-        </table><tbody>
+        <><div>
+            <h1>
+                <p>Results</p>
+            </h1>
+        </div><div>
             {props.searchResults.map((item)=>{
                 return(
-                    <tr>
-                     <td>{item.snippet.channelTitle}</td>
-                    </tr>
+                    <ul>
+                     <a href={item.snippet.channelTitle} >{item.snippet.channelTitle}</a>
+                    </ul>
                 )
             })}
-            </tbody></>
+            </div></>
        
     );
 
