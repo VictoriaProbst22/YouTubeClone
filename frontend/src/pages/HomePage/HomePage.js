@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import SearchBar from "../SearchPage/SearchBar";
 import SearchPage from "../SearchPage/SearchPage";
-
+import VideoId from "../VideoPage/VideoId";
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -33,27 +33,24 @@ const HomePage = () => {
   }, [token]);
 
 
-  useEffect(()=> {
-    const runSearch = async () => {
-        try {
-            let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=cats&key=AIzaSyCg6SPiJnWlubOupiBPT59UntynLNthKPM")
-            console.log(response.data)
-            setSearchResults(response.data.items)
-        } catch (error) {
-            console.log(error.response.data);
-        }
-    };
-    runSearch();
-}, []);
+  useEffect(()=>{
+    
+  }, []);
 
 
 
+  async function runSearch(){
+   let response = await axios.get('https://www.googleapis.com/youtube/v3/search?key=AIzaSyCKYIVPwKH18RJuDv8of60qwh_aUZK5H1Q&part=snippet&q=cats');
+    setSearchResults(response.data.items);
+    console.log(response.data);
+  }
 
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
-      <SearchBar />
-      <SearchPage />
+      <SearchBar searchSongProp={runSearch} />
+      <SearchPage searchResults={searchResults}/>
+      < VideoId />
     {console.log('searchResults in render:' , searchResults)}
       {cars &&
         cars.map((car) => (

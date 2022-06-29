@@ -3,12 +3,16 @@ import React, { useState } from "react";
 const SearchBar = (props) => {
     
    const [sTerm, setSTerm] = useState('')
+    
+   
+   
+
 
     function handleSubmit(event){
         event.preventDefault();
     
          console.log(sTerm);
-        
+        props.searchSongProp(sTerm);
 
     }
 
