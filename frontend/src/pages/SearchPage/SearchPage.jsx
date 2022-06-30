@@ -1,6 +1,6 @@
 // set up axios  requests to fetch videos from the YOUTUBE DATA API based on a provided search string
 import React from "react";
-
+import { Link} from "react-router-dom" ;
 
 const SearchPage = (props) => {
     console.log(props.searchResults);
@@ -15,10 +15,15 @@ const SearchPage = (props) => {
             {props.searchResults.map((item)=>{
                 return(
                     <ul>
-                     <a href={item.id.videoId} >{item.snippet.channelTitle}</a>
+                     <a >{item.snippet.title}</a>
+                     <Link to={`video/${item.id.videoId}/`}>Click</Link>
                     </ul>
-                )
+  
+                );
+                
+         
             })}
+        
             </div></>
        
     );
