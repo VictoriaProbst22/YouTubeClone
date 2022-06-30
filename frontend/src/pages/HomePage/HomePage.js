@@ -40,7 +40,7 @@ const HomePage = () => {
 
 
   async function runSearch(){
-   let response = await axios.get('https://www.googleapis.com/youtube/v3/search?key=AIzaSyCKYIVPwKH18RJuDv8of60qwh_aUZK5H1Q&part=snippet&q=cats');
+   let response = await axios.get('https://www.googleapis.com/youtube/v3/search?key=AIzaSyBwuCNeTni2dVEr3yGmSjwek1SSJMXy1qA&part=snippet&q=cats');
     setSearchResults(response.data.items);
     console.log(response.data);
   }
