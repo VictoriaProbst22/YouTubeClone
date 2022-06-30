@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const RelatedVideos = (props) => {
     console.log(props.videosProps);
 
@@ -14,6 +14,7 @@ const RelatedVideos = (props) => {
                 <ul>
                     <li>
                         <a>{items.snippet.channelTitle} </a>
+                        <Link to={`video/${items.id.videoId}/`}>Click</Link>
                     </li>
                 </ul>
             )
