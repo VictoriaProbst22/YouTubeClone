@@ -14,7 +14,7 @@ const VideoPage = (props) => {
 
 
 async function suggestVideos(){
-    let response = await axios.get("https://www.googleapis.com/youtube/v3/search?type=video&part=snippet&key=AIzaSyBwuCNeTni2dVEr3yGmSjwek1SSJMXy1qA&relatedToVideoId=21oQ4X2NxIs");
+    let response = await axios.get("https://www.googleapis.com/youtube/v3/search?type=video&part=snippet&key=AIzaSyDdJDlxnFBHyHQDgcg6g2L1ZlX-kMhv4jE&relatedToVideoId=21oQ4X2NxIs");
     setRelatedVideo(response.data.items)
     console.log(response.data)
 }

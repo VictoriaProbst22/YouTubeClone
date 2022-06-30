@@ -16,7 +16,7 @@ const SearchPage = (props) => {
                 return(
                     <ul>
                      <a >{item.snippet.channelTitle}</a>
-                     <Link to={`video/${item.id.videoId}/`}>Click</Link>
+                    <Link to={`video/${item.id.videoId}/`}>Click</Link>
                     </ul>
   
                 );
