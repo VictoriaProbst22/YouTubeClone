@@ -9,14 +9,13 @@ const RelatedVideos = (props) => {
             <p>These Are Related Videos!</p>
             </h3>
         <div>
-          {props.videosProps.map((items)=>{
+          {props.videosProps.map((item)=>{
             return(
                 <ul>
-                    <li>
-                        <a>{items.snippet.channelTitle} </a>
-                        
-                    </li>
+                    <a>{item.snippet.title} </a>
+                    <Link to={`video/${item.id.videoId}/${item.id.videoId}`} > Click Me!</Link>
                 </ul>
+                
             )
           })}
         </div>
