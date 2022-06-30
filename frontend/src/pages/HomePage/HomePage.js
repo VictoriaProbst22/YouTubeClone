@@ -50,7 +50,6 @@ const HomePage = () => {
       <h1>Home Page for {user.username}!</h1>
       <SearchBar searchSongProp={runSearch} />
       <SearchPage searchResults={searchResults}/>
-    {console.log('searchResults in render:' , searchResults)}
       {cars &&
         cars.map((car) => (
           <p key={car.id}>
