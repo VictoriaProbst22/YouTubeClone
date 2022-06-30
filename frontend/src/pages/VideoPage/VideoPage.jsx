@@ -32,7 +32,7 @@ async function suggestVideos(){
          src={url}
           frameBorder="0"></iframe>
     </div>
-    <RelatedVideos relatedVideosProps={suggestVideos}/>
+    <RelatedVideos videosProps={relatedVideo}/>
     {console.log('Results in render:' , relatedVideo)}
     </div> );
 }
