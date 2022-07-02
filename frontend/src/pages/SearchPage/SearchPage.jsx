@@ -15,7 +15,7 @@ const SearchPage = (props) => {
             {props.searchResults.map((item)=>{
                 return(
                     <ul>
-                     <a >{item.snippet.channelTitle}</a>
+                     <a >{item.snippet.title}</a>
                     <Link to={`video/${item.id.videoId}/`}>Click</Link>
                     </ul>
   
